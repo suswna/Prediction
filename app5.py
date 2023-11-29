@@ -6,7 +6,7 @@ import shap
 import matplotlib.pyplot as plt  # Import Matplotlib
 
 # Load the GBDT model using joblib
-model_path = "/Users/sujiayi/Desktop/the innovation/2023.11纤维/纤维哺乳期结果/gbdt_model_rf纤维哺乳期.pkl"
+model_path = "./gbdt_model_rf纤维哺乳期.pkl"
 gbdt_model = joblib.load(model_path)
 
 # Streamlit UI
