@@ -15,10 +15,10 @@ st.title("Weaned Litter Weight Prediction")
 
 # Add input fields for the 10 features
 parity = st.number_input("Parity", min_value=1, value=3)
-l_me = st.number_input("L.ME", min_value=0.00, value=12.33)
-birth_litter_weight = st.number_input("Birth litter weight", min_value=0.0, value=16.5)
+l_me = st.number_input("L.ME (MJ/kg)", min_value=0.00, value=12.33)
+birth_litter_weight = st.number_input("Birth litter weight (kg)", min_value=0.0, value=16.5)
 weaned_litter_size = st.number_input("Weaned litter size", min_value=0, value=11)
-duration_of_lactation = st.number_input("duration of lactation (days)", min_value=0, value=21)
+duration_of_lactation = st.number_input("duration of lactation (d)", min_value=0, value=21)
 
 # Create a DataFrame with the input values
 input_data = pd.DataFrame({
@@ -33,7 +33,7 @@ input_data = pd.DataFrame({
 prediction = gbdt_model.predict(input_data)
 
 # Display the predicted Birth Litter Weight
-st.subheader("Predicted Weaned Litter Weight ")
+st.subheader("Predicted Weaned Litter Weight (kg)")
 st.write(prediction[0])
 
 # Explain the prediction using SHAP
