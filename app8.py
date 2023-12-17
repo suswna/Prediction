@@ -7,7 +7,7 @@ import shap
 import matplotlib.pyplot as plt  # Import Matplotlib
 
 # Load the GBDT model using joblib
-model_path = "/Users/sujiayi/Desktop/gbdt_model_rf纤维妊娠期（原数据）.pkl"
+model_path = "/Users/sujiayi/Desktop/gbdt_model_rf纤维妊娠期（原数据）8.pkl"
 gbdt_model = joblib.load(model_path)
 
 # Streamlit UI
@@ -15,10 +15,10 @@ st.title("Birth Litter Weight Prediction")
 
 # Add input fields for the 10 features
 parity = st.number_input("Parity", min_value=1, value=3)
-g_adfip2 = st.number_input("G.ADFIp2", min_value=0.0, value=2.61)
-g_adfip3 = st.number_input("G.ADFIp3", min_value=0.0, value=2.47)
-g_adfip4 = st.number_input("G.ADFIp4", min_value=0.0, value=3.06)
-g_adf = st.number_input("G.ADF", min_value=0.0, value=0.06)
+g_adfip2 = st.number_input("G.ADFIp2 (kg/d)", min_value=0.0, value=2.61)
+g_adfip3 = st.number_input("G.ADFIp3 (kg/d)", min_value=0.0, value=2.47)
+g_adfip4 = st.number_input("G.ADFIp4 (kg/d)", min_value=0.0, value=3.06)
+g_adf = st.number_input("G.ADF (%)", min_value=0.0, value=0.06)
 
 # Create a DataFrame with the input values
 input_data = pd.DataFrame({
@@ -33,7 +33,7 @@ input_data = pd.DataFrame({
 prediction = gbdt_model.predict(input_data)
 
 # Display the predicted Birth Litter Weight
-st.subheader("Predicted Birth Litter Weight")
+st.subheader("Predicted Birth Litter Weight (kg)")
 st.write(prediction[0])
 
 # Explain the prediction using SHAP
